@@ -43,30 +43,30 @@ def get_seodaemun_education_services(api_key, selected_date, start_index=1, end_
                     
                     # 서비스가 선택된 날짜 범위 내에 있는 경우만 출력
                     if start_date_obj <= selected_date_obj <= end_date_obj:
-                        st.write(f"**Service Name**: {service_name}")
-                        st.write(f"**Location**: {service_location}")
-                        st.write(f"**Start Date**: {start_date_obj.strftime('%Y-%m-%d')}")
-                        st.write(f"**End Date**: {end_date_obj.strftime('%Y-%m-%d')}")
+                        st.write(f"**서비스 이름**: {service_name}")
+                        st.write(f"**위치**: {service_location}")
+                        st.write(f"**시작 날짜**: {start_date_obj.strftime('%Y-%m-%d')}")
+                        st.write(f"**종료 날짜**: {end_date_obj.strftime('%Y-%m-%d')}")
                         st.write("-" * 30)
                         found_services = True
                 except ValueError as e:
-                    st.write(f"Date parsing error for service: {service_name}, error: {e}")
+                    st.write(f"날짜 파싱 오류 서비스: {service_name}, 오류: {e}")
         
         # 검색된 서비스가 없을 경우 메시지 출력
         if not found_services:
-            st.write("No services available for the selected date.")
+            st.write("선택한 날짜에 이용 가능한 서비스가 없습니다.")
     else:
-        st.write(f"Failed to retrieve data: {response.status_code}")
+        st.write(f"데이터를 가져오는 데 실패했습니다: {response.status_code}")
 
 # Streamlit UI
 def main():
-    st.title("Seodaemun Education Public Services")
+    st.title("서울시 교육정보 확인하기")
     api_key = "767063424f7361793131334167597278"
     
     # 날짜 입력받기
-    selected_date = st.date_input("Select Date (YYYY-MM-DD)", value=datetime(2024, 1, 1), format="YYYY-MM-DD")
+    selected_date = st.date_input("날짜 선택 (YYYY-MM-DD)", value=datetime(2024, 1, 1), format="YYYY-MM-DD")
     
-    if st.button("Search Services"):
+    if st.button("서비스 검색"):
         get_seodaemun_education_services(api_key, selected_date.strftime("%Y-%m-%d"))
 
 if __name__ == "__main__":
