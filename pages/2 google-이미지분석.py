@@ -3,7 +3,7 @@ import google.generativeai as genai
 import tempfile
 
 # API 키 설정
-api_key = "AIzaSyCJGQMDT4JEbNsWuDaYlcSAY0dvOvTvBzg"
+api_key = ""
 
 # API 키 설정
 if api_key:
