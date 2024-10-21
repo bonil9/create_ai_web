@@ -63,12 +63,11 @@ def main():
     st.title("서울시 교육정보 확인하기")
     api_key = "767063424f7361793131334167597278"
     
-    # 날짜 입력받기
-    selected_date = st.date_input("날짜 선택 (YYYY-MM-DD)", value=datetime(2024, 1, 1), format="YYYY-MM-DD")
+    # 날짜 입력받기 (오늘 날짜로 초기값 설정)
+    selected_date = st.date_input("날짜 선택 (YYYY-MM-DD)", value=datetime.today(), format="YYYY-MM-DD")
     
     if st.button("서비스 검색"):
         get_seodaemun_education_services(api_key, selected_date.strftime("%Y-%m-%d"))
 
 if __name__ == "__main__":
     main()
-    
