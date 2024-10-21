@@ -1,13 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 사이드바에서 API 키 입력 받기
-st.sidebar.title("API 설정")
-api_key = st.sidebar.text_input("Google Gemini API 키를 입력하세요", type="password")
+# API 키 설정
+api_key = "AIzaSyCJGQMDT4JEbNsWuDaYlcSAY0dvOvTvBzg"
 
-# API 키가 입력되었는지 확인
+# API 키 설정
 if api_key:
-    # API 키 설정
     genai.configure(api_key=api_key)
 
     # Streamlit 페이지 제목 설정
@@ -42,5 +40,3 @@ if api_key:
         # 결과 출력
         st.subheader("생성된 상장")
         st.write(response.text)
-else:
-    st.warning("API 키를 사이드바에 입력하세요.")
