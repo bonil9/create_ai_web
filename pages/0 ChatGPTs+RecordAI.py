@@ -10,4 +10,4 @@ chatgpt_url_3 = "https://chatgpt.com/g/g-9N4SjezVJ-self-introduction-writing-rec
 
 st.markdown(f'[생기부 작성 ChatGPTs 보러 가기]({chatgpt_url_1})', unsafe_allow_html=True)
 st.markdown(f'[시험 출제 ChatGPTs 보러 가기]({chatgpt_url_2})', unsafe_allow_html=True)
-st.markdown(f'[영어 자기소개서 보러 가기]({chatgpt_url_3})', unsafe_allow_html=True)
+st.markdown(f'[영어 자기소개서 ChatGPTs 보러 가기]({chatgpt_url_3})', unsafe_allow_html=True)
