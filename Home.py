@@ -53,8 +53,8 @@ components.html(f"""
             setTimeout(function() {{
                 var typed = new Typed("#typed-output", {{
                     strings: [{typed_text!r}],
-                    typeSpeed: 120,
-                    backSpeed: 50,
+                    typeSpeed: 60,
+                    backSpeed: 30,
                     showCursor: true,
                     cursorChar: "|",
                     loop: false
