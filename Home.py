@@ -12,19 +12,54 @@ components.html(f"""
 <html lang="en">
 <head>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        html, body {{
+            height: 1000px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }}
+        #top-frame {{
+            flex: 8;
+            overflow: auto;
+        }}
+        #bottom-frame {{
+            flex: 2;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+        #intro {{
+            text-align: right;
+            margin-bottom: 20px;
+        }}
+        img {{
+            width: 600px;
+        }}
+    </style>
 </head>
 <body>
-    <div id="typed-output"></div>
+    <div id="top-frame">
+        <div id="intro">너에 대해 소개 해봐</div>
+        <div id="typed-output" style="margin-top: 20px;"></div>
+    </div>
+    <div id="bottom-frame">
+        <img src="https://postfiles.pstatic.net/MjAyNDEwMjhfOTAg/MDAxNzMwMTE0ODc1ODgy.YmcUpDRZd2DFYHGODkvulWwiaRed14YbQ0jgBKFubCMg.pLvl3LZTCTYNExOkmZt_j9EYkDqU72Ob0YdpJhgzYbkg.PNG/SE-933f95e1-9960-4310-8302-7fdb4fbc1783.png?type=w773" alt="Intro Image">
+    </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {{
-            var typed = new Typed("#typed-output", {{
-                strings: [{typed_text!r}],
-                typeSpeed: 50,
-                backSpeed: 25,
-                showCursor: true,
-                cursorChar: "|",
-                loop: false
-            }});
+            // '너에 대해 소개 해봐' 글을 먼저 표시하고, 그 다음 타이핑 효과 시작
+            setTimeout(function() {{
+                var typed = new Typed("#typed-output", {{
+                    strings: [{typed_text!r}],
+                    typeSpeed: 50,
+                    backSpeed: 25,
+                    showCursor: true,
+                    cursorChar: "|",
+                    loop: false
+                }});
+            }}, 1000); // 1초 후 타이핑 효과 시작
         }});
     </script>
 </body>
