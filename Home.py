@@ -54,7 +54,7 @@ components.html(f"""
                 var typed = new Typed("#typed-output", {{
                     strings: [{typed_text!r}],
                     typeSpeed: 120,
-                    backSpeed: 25,
+                    backSpeed: 50,
                     showCursor: true,
                     cursorChar: "|",
                     loop: false
