@@ -24,7 +24,7 @@ components.html(f"""
             overflow: auto;
         }}
         #bottom-frame {{
-            flex: 2;
+            flex: 1.5;
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -52,10 +52,9 @@ components.html(f"""
             setTimeout(function() {{
                 var typed = new Typed("#typed-output", {{
                     strings: [{typed_text!r}],
-                    typeSpeed: 100,
-                    backSpeed: 50,
-                    showCursor: true,
-                    cursorChar: "|",
+                    typeSpeed: 10,  // 타이핑 속도 매우 빠르게 증가
+                    backSpeed: 5,   // 백스페이스 속도 매우 빠르게 증가
+                    showCursor: false,
                     loop: false
                 }});
             }}, 1000); // 1초 후 타이핑 효과 시작
@@ -63,9 +62,31 @@ components.html(f"""
     </script>
 </body>
 </html>
-""", height=500)
+""", height=400)
 
 # Streamlit 입력창 추가
+def focus_input():
+    components.html("""
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const inputElement = window.parent.document.querySelector('input[type="text"]');
+            if (inputElement) {
+                inputElement.focus();
+                inputElement.setSelectionRange(inputElement.value.length, inputElement.value.length);  // 커서를 '메시지 RecordAI' 뒤에 위치시킴
+                inputElement.style.caretColor = "black";  // 커서 색상을 명확하게 표시
+                setInterval(function() {{
+                    if (inputElement.style.caretColor === "transparent") {{
+                        inputElement.style.caretColor = "black";
+                    }} else {{
+                        inputElement.style.caretColor = "transparent";
+                    }}
+                }}, 500);  // 깜박이는 효과 추가
+            }
+        });
+    </script>
+    """, height=0)
+
+focus_input()
 user_input = st.text_input("", "메시지 RecordAI")
 
 # 입력된 텍스트 출력 (필요한 경우 다른 용도로 사용할 수 있음)
