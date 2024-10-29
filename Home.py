@@ -90,4 +90,4 @@ focus_input()
 user_input = st.text_input("", "메시지 RecordAI")
 
 # 입력된 텍스트 출력 (필요한 경우 다른 용도로 사용할 수 있음)
-st.write(f"입력된 내용: {user_input}")
+st.write(f"")
