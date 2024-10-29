@@ -14,7 +14,7 @@ components.html(f"""
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <style>
         html, body {{
-            height: 1000px;
+            height: 100%;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -34,9 +34,6 @@ components.html(f"""
             text-align: right;
             margin-bottom: 20px;
         }}
-        img {{
-            width: 600px;
-        }}
     </style>
 </head>
 <body>
@@ -45,7 +42,9 @@ components.html(f"""
         <div id="typed-output" style="margin-top: 20px;"></div>
     </div>
     <div id="bottom-frame">
-        <img src="https://postfiles.pstatic.net/MjAyNDEwMjhfOTAg/MDAxNzMwMTE0ODc1ODgy.YmcUpDRZd2DFYHGODkvulWwiaRed14YbQ0jgBKFubCMg.pLvl3LZTCTYNExOkmZt_j9EYkDqU72Ob0YdpJhgzYbkg.PNG/SE-933f95e1-9960-4310-8302-7fdb4fbc1783.png?type=w773" alt="Intro Image">
+        <div id="streamlit-input">
+            <p></p>
+        </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function() {{
@@ -53,8 +52,8 @@ components.html(f"""
             setTimeout(function() {{
                 var typed = new Typed("#typed-output", {{
                     strings: [{typed_text!r}],
-                    typeSpeed: 60,
-                    backSpeed: 30,
+                    typeSpeed: 100,
+                    backSpeed: 50,
                     showCursor: true,
                     cursorChar: "|",
                     loop: false
@@ -64,4 +63,10 @@ components.html(f"""
     </script>
 </body>
 </html>
-""")
+""", height=500)
+
+# Streamlit 입력창 추가
+user_input = st.text_input("", "메시지 RecordAI")
+
+# 입력된 텍스트 출력 (필요한 경우 다른 용도로 사용할 수 있음)
+st.write(f"입력된 내용: {user_input}")
