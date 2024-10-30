@@ -18,21 +18,24 @@ if api_key:
     # 사용자가 생성하고자 하는 그림에 대한 설명 입력
     user_prompt = st.text_area("생성할 그림에 대한 설명을 입력하세요")
 
+    number_of_images = st.slider("생성할 이미지 수", 1, 4, 1)
+    aspect_ratio = st.selectbox("이미지 비율 선택", ["1:1", "3:4", "4:3", "16:9"], index=1)
+
     if st.button("그림 생성"):
         if user_prompt:
             try:
-                # 입력된 설명을 바탕으로 그림 생성 요청
-                result = genai.generate_image(
+                # 모델을 사용하여 이미지 생성 요청
+                model = genai.get_model(model_name="models/image-generation")
+                result = model.generate(
                     prompt=user_prompt,
-                    number_of_images=1,
-                    safety_filter_level="block_only_high",
-                    aspect_ratio="3:4",
-                    negative_prompt=""
+                    num_images=number_of_images,
+                    aspect_ratio=aspect_ratio
                 )
 
                 # 응답이 이미지 데이터일 경우 출력
                 if result and hasattr(result, 'images') and result.images:
-                    st.image(result.images[0], caption="생성된 그림")
+                    for i, image in enumerate(result.images):
+                        st.image(image, caption=f"생성된 그림 {i+1}")
                 else:
                     st.warning("이미지를 생성할 수 없습니다. 다른 설명을 시도해보세요.")
             except Exception as e:
