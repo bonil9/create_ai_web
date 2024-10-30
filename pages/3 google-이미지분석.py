@@ -2,11 +2,13 @@ import streamlit as st
 import google.generativeai as genai
 import tempfile
 
-# API 키 설정
-api_key = ""
+# 사이드바에서 API 키 입력 받기
+st.sidebar.title("API 설정")
+api_key = st.sidebar.text_input("Google Gemini API 키를 입력하세요", type="password")
 
-# API 키 설정
+# API 키가 입력되었는지 확인
 if api_key:
+    # API 키 설정
     genai.configure(api_key=api_key)
 
     # Streamlit 페이지 제목 설정
@@ -36,10 +38,10 @@ if api_key:
         with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as temp_file:
             temp_file.write(file_data)
             temp_file_path = temp_file.name
-
+        
         # 업로드
         file = genai.upload_file(temp_file_path, mime_type=mime_type)
-
+        
         return file
 
     if uploaded_file is not None:
@@ -53,7 +55,7 @@ if api_key:
                     "role": "user",
                     "parts": [
                         uploaded_gemini_file,
-                        "이 이미지의 내용을 분석해 주세요. 이미지의 중요한 요소들을 설명하고, 그 의미를 분석해 주세요.",
+                        "이 이미지는 악보 이미지 입니다. 이 노래가 어울리는 상황을 제시하고 시나리오를 생성해주세요..",
                     ],
                 },
             ]
@@ -63,3 +65,5 @@ if api_key:
         response = chat_session.send_message("이미지 분석 결과를 알려주세요.")
         st.subheader("이미지 분석 결과")
         st.write(response.text)
+else:
+    st.warning("API 키를 사이드바에 입력하세요.")
