@@ -11,7 +11,7 @@ api_key = 'e0ebc693609640248fc0cdb50b3e5b82'
 base_url = 'https://open.neis.go.kr/hub/mealServiceDietInfo'
 
 # Streamlit을 사용하여 날짜 입력 받기
-input_date = st.text_input('날짜를 입력하세요 (YYYYMMDD 형식):', '')
+input_date = st.date_input('날짜를 선택하세요:').strftime('%Y%m%d')
 
 if input_date:
     # 요청 파라미터 설정
