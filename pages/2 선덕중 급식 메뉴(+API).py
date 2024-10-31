@@ -29,16 +29,14 @@ if input_date:
     # 응답 처리
     if response.status_code == 200:
         data = response.json()
-        if 'mealServiceDietInfo' in data and len(data['mealServiceDietInfo']) > 1:
+        if 'mealServiceDietInfo' in data and 'row' in data['mealServiceDietInfo'][1]:
             meal_info = data['mealServiceDietInfo'][1]['row']
             if meal_info:
                 # 데이터를 DataFrame으로 변환
                 meal_data = []
                 for meal in meal_info:
                     meal_data.append({
-                        '급식 날짜': meal['MLSV_YMD'],
-                        '급식 종류': meal['MMEAL_SC_NM'],
-                        '메뉴': meal['DDISH_NM'].replace('<br/>', ', ')
+                       '메뉴': meal['DDISH_NM'].replace('<br/>', ', ')
                     })
                 df = pd.DataFrame(meal_data)
                 # Streamlit을 사용해 DataFrame을 표시
