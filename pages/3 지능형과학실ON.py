@@ -11,5 +11,5 @@ chatgpt_url_3 = "https://blog.naver.com/sayment/223726624617"
 
 st.markdown(f'[학교 관리자 권한 받기!!]({chatgpt_url_1})', unsafe_allow_html=True)
 st.markdown(f'[지능형과학실ON 사용중 당황하게 만드는 것들]({chatgpt_url_2})', unsafe_allow_html=True)
-st.markdown(f'[협력탐구 설정하는 해야하는 경우]({chatgpt_url_3})', unsafe_allow_html=True)
+st.markdown(f'[협력탐구로 설정 해야하는 경우]({chatgpt_url_3})', unsafe_allow_html=True)
 
