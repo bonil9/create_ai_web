@@ -10,7 +10,7 @@ def calculate_angle(base, height):
     
     return theta_deg
 
-st.title("에라토스테네스의 지구크기 측정 각도 계산")
+st.title("에라토스테네스 지구크기 각도계산")
 
 
 base = st.number_input("막대기 길이를 입력하세요:(예시:12.2)(단위는 쓰지마세요)", min_value=0.0, format="%.2f")
