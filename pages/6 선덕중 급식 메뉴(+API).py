@@ -4,7 +4,7 @@ import pandas as pd
 import streamlit as st
 
 # 출력 상단 제목 추가
-st.title('선덕중학교 급식 메뉴 알아보기')
+st.title('도촌초등학교 급식 메뉴 알아보기')
 
 # NEIS API 기본 정보 설정
 api_key = 'e0ebc693609640248fc0cdb50b3e5b82'
@@ -16,8 +16,8 @@ input_date = st.date_input('날짜를 선택하세요:').strftime('%Y%m%d')
 if input_date:
     # 요청 파라미터 설정
     params = {
-        'ATPT_OFCDC_SC_CODE': 'B10',        # 시도 교육청 코드
-        'SD_SCHUL_CODE': '7051190',          # 학교 코드
+        'ATPT_OFCDC_SC_CODE': 'K10',        # 시도 교육청 코드
+        'SD_SCHUL_CODE': '7952013',          # 학교 코드
         'MLSV_YMD': input_date,              # 입력 받은 날짜 (YYYYMMDD 형식)
         'KEY': api_key,                      # API 키
         'Type': 'json'                       # 응답 형식
